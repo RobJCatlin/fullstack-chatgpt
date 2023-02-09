@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 
 const uri =
-  "mongodb+srv://robcatlin:0XIRkt9lwgDkxorr@cluster0.ft5dl5y.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://robcatlin:dyb55nsFpcBdE12kMY5q9z4FEpXvNE@cluster0.jo9w9oa.mongodb.net/?retryWrites=true&w=majority";
 
 async function connect() {
   try {
@@ -25,6 +25,16 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("User", userSchema);
+
+const user = new User({
+  username: "Rob",
+  password: "12345",
+});
+
+user.save((error) => {
+  if (error) throw error;
+  console.log("New user has been added to the database");
+});
 
 app.get("/", (req, res) => {
   res.send("Server is up and running dawg!");
