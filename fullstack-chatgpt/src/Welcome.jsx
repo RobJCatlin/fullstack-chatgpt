@@ -1,9 +1,9 @@
 import "./App.css";
 import React, { useState, useEffect, useRef } from "react";
 
-const boardSetting = {
+const boardSettings = {
   rows: 8,
-  columns: 100,
+  columns: 10,
   dropAnimationRate: 50,
   flashAnimationRate: 600,
   colors: {
@@ -33,7 +33,7 @@ function WelcomePage(props) {
    * @param {number} row - row in board
    * @param {number} column - column in board
    */
-  function getInde(row, column) {
+  function getIndex(row, column) {
     const index = row * boardSettings.columns + column;
     if (index > boardSettings.rows * boardSettings.colums) return null;
     return index;
@@ -94,8 +94,12 @@ function WelcomePage(props) {
     setBoard(newBoard);
     // Check for win
 
-    setCurrentPlayer();
-    // missing code
+    setCurrentPlayer(
+      // missing code
+      currentPlayer === boardSettings.colors.p1
+        ? boardSettings.colors.p2
+        : boardSettings.colors.p1
+    );
   }
 
   async function animateDrop(row, column, color, currentRow) {
