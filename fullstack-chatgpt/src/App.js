@@ -36,8 +36,8 @@ function App(props) {
           path='/welcome'
           element={<WelcomePage {...props} username={username} />}
         />
+        <Route path='/' element={<h1>Let the games begin</h1>} />
       </Routes>
-      <h1>Let the games begin</h1>
       <form onSubmit={handleSubmit} action='/Welcome'>
         <label>
           Username:
